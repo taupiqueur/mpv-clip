@@ -45,7 +45,11 @@ end
 -- Creates a clip out of the currently played video using A-B loop points.
 -- The clip will be saved on your desktop with the following command.
 --
--- ffmpeg -i <input> -ss <a-point> -to <b-point> -map 0 -c copy -- <output>
+-- ffmpeg -ss <a-point> -i <input> -to <b-point> -map 0 -c copy -copyts -- <output>
+--
+-- See [Seeking] for details.
+--
+-- [Seeking]: https://trac.ffmpeg.org/wiki/Seeking
 --
 local function create()
   local start_time = mp.get_property_native("ab-loop-a")
@@ -73,7 +77,7 @@ local function create()
   end
 
   -- Shell command to create the clip
-  local args = { "ffmpeg", "-i", input, "-ss", tostring(start_time), "-to", tostring(end_time), "-map", "0", "-c", "copy", "--", output }
+  local args = { "ffmpeg", "-ss", tostring(start_time), "-i", input, "-to", tostring(end_time), "-map", "0", "-c", "copy", "-copyts", "--", output }
 
   -- Start processing the clip
   log("Processing clip: " .. output)
