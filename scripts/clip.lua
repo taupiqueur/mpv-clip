@@ -45,7 +45,7 @@ end
 -- Creates a clip out of the currently played video using A-B loop points.
 -- The clip will be saved on your desktop with the following command.
 --
--- ffmpeg -ss <a-point> -i <input> -to <b-point> -map 0 -c copy -copyts -- <output>
+-- ffmpeg -ss <a-point> -i <input> -to <b-point> -map 0 -c copy -- <output>
 --
 -- See [Seeking] for details.
 --
@@ -77,7 +77,7 @@ local function create()
   end
 
   -- Shell command to create the clip
-  local args = { "ffmpeg", "-ss", tostring(start_time), "-i", input, "-to", tostring(end_time), "-map", "0", "-c", "copy", "-copyts", "--", output }
+  local args = { "ffmpeg", "-ss", tostring(start_time), "-i", input, "-to", tostring(end_time - start_time), "-map", "0", "-c", "copy", "--", output }
 
   -- Start processing the clip
   log("Processing clip: " .. output)

@@ -9,7 +9,7 @@ Press `l` to set [A-B loop points], then `c` to create the clip.
 The clip will be saved on your desktop with the following command.
 
 ```
-ffmpeg -ss <a-point> -i <input> -to <b-point> -map 0 -c copy -copyts -- <output>
+ffmpeg -ss <a-point> -i <input> -to <b-point> -map 0 -c copy -- <output>
 ```
 
 See [Seeking] for details.
