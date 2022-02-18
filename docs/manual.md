@@ -21,7 +21,7 @@ with a detailed message in the terminal and the [console].
 
 [Console]: https://mpv.io/manual/master/#console
 
-## Key-bindings
+## Key bindings
 
 ###### create
 

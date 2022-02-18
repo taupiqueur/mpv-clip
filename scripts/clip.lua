@@ -94,5 +94,5 @@ local function create()
   end
 end
 
--- Key-bindings
+-- Key bindings
 mp.add_key_binding("c", "create", create)
