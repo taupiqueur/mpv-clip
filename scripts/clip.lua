@@ -8,7 +8,7 @@ local options = {
   directory = "~/Desktop"
 }
 
--- Read options
+-- Read options.
 mp.options.read_options(options)
 options.directory = mp.command_native({ "expand-path", options.directory })
 
@@ -55,13 +55,13 @@ local function create()
   local start_time = mp.get_property_native("ab-loop-a")
   local end_time = mp.get_property_native("ab-loop-b")
 
-  -- Abort if A-B loop is not set
+  -- Abort if A-B loop is not set.
   if start_time == "no" or end_time == "no" then
     log("A-B loop must be set", "error")
     return
   end
 
-  -- Set input and output files
+  -- Set input and output files.
   local input = mp.get_property("path")
   local file_stem = mp.command_native({ "expand-text", "${filename/no-ext}_${ab-loop-a}_${ab-loop-b}" })
   local file_dot_extension = get_file_dot_extension()
@@ -70,21 +70,21 @@ local function create()
   end
   local output = options.directory .. "/" .. file_stem .. file_dot_extension
 
-  -- Abort if file exists
+  -- Abort if file exists.
   if file_exists(output) then
     log("Can’t save clip, file '" .. output .. "' already exists!", "error")
     return
   end
 
-  -- Shell command to create the clip
+  -- Shell command to create the clip.
   local args = { "ffmpeg", "-ss", tostring(start_time), "-i", input, "-to", tostring(end_time - start_time), "-map", "0", "-c", "copy", "--", output }
 
-  -- Start processing the clip
+  -- Start processing the clip.
   log("Processing clip: " .. output)
   mp.msg.info(table.concat(args, " "))
   local result = mp.command_native({ name = "subprocess", args = args, capture_stdout = true, capture_stderr = true })
 
-  -- Show result
+  -- Show result.
   if result.status == 0 then
     log("Clip complete: " .. output)
     mp.msg.verbose(result.stdout, result.stderr)
