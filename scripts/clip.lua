@@ -47,9 +47,9 @@ end
 --
 -- ffmpeg -ss <a-point> -i <input> -to <b-point> -map 0 -c copy -- <output>
 --
--- See [Seeking] for details.
+-- See [FFmpeg’s seeking] for details.
 --
--- [Seeking]: https://trac.ffmpeg.org/wiki/Seeking
+-- [FFmpeg’s seeking]: https://trac.ffmpeg.org/wiki/Seeking
 --
 local function create()
   local start_time = mp.get_property_native("ab-loop-a")

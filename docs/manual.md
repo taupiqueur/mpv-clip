@@ -12,14 +12,14 @@ The clip will be saved on your desktop with the following command.
 ffmpeg -ss <a-point> -i <input> -to <b-point> -map 0 -c copy -- <output>
 ```
 
-See [Seeking] for details.
+See [FFmpeg’s seeking] for details.
 
-[Seeking]: https://trac.ffmpeg.org/wiki/Seeking
+[FFmpeg’s seeking]: https://trac.ffmpeg.org/wiki/Seeking
 
 After processing the clip, a notification will appear on the screen,
-with a detailed message in the terminal and the [console].
+with a detailed message in the terminal and [mpv’s console].
 
-[Console]: https://mpv.io/manual/master/#console
+[mpv’s console]: https://mpv.io/manual/master/#console
 
 ## Key bindings
 
